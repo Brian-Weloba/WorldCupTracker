@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Quicksand';
+    src: local('Quicksand'), url(./assets/fonts/Quicksand-Medium.ttf);
+  }
+  @font-face {
+    font-family: 'Quicksand-bold';
+    src: local('Quicksand-light'), url(./assets/fonts/Quicksand-Light.ttf);
+  }
+  @font-face {
+    font-family: 'Quicksand-light';
+    src: local('Quicksand-light'), url(./assets/fonts/Quicksand-Bold.ttf);
+  }
+}
+
+
