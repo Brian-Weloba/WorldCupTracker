@@ -1,13 +1,14 @@
 <app-navbar class="drop-shadow-md fixed"></app-navbar>
-<div class=" body flex h-screen font-sans pt-16">
+<div class="flex flex-col md:flex-row md:h-screen font-sans pt-16">
   <app-matches
-    class="matches w-4/12 bg-amber-600 h-full pb-10 overflow-scroll scrollbar-thin scrollbar-thumb-amber-600 scrollbar-track-zinc-200 scrollbar-rounded"></app-matches>
+    class=" w-screen flex md:block md:w-5/12 lg:w-4/12 bg-amber-600 h-full pb-10 overflow-scroll scrollbar-thin scrollbar-thumb-amber-600 scrollbar-track-zinc-200 scrollbar-rounded"></app-matches>
   <app-standings
-    class="w-full rounded-t-lg p-3 bg-zinc-100 p-10 h-full overflow-scroll scrollbar-thin scrollbar-thumb-amber-600 scrollbar-track-zinc-200 scrollbar-rounded"></app-standings>
+    class="w-screen md:w-full rounded-t-lg p-3 bg-zinc-100 md:p-10 h-full overflow-scroll scrollbar-thin scrollbar-thumb-amber-600 scrollbar-track-zinc-200 scrollbar-rounded"></app-standings>
 </div>
+<!--<lib-about-banner></lib-about-banner>-->
 <div class="h-max bg-zinc-900 border-t-white border-t-2 flex flex-col">
   <div class="w-full h-max flex">
-    <p class="m-auto text-white">Thank you for visiting, feel free to check out my other projects:</p>
+    <p class="m-auto py-2 text-white">Thank you for visiting, feel free to check out my other projects:</p>
   </div>
   <div class="flex p-3 pb-10 w-full">
     <a href="https://github-search-v2.vercel.app/" class="m-auto ">

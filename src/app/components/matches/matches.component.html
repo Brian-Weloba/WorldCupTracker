@@ -1,52 +1,61 @@
-<div class=" text-white flex justify-center items-center h-max  mx-5">
-  <p class="w-full border-b-2 border-pink-100 text-center">Matches</p>
+<div class="hidden text-white md:flex flex-row md:flex-col justify-between w-max md:justify-center md:items-center h-max  md:mx-5">
+    <p class="w-full border-b-2 border-pink-100 text-center">Matches</p>
+  <!--  <div class="w-full flex h-max mt-2">-->
+  <!--    <p class="text-black">Filter: </p>-->
+  <!--    <div class="w-max px-2 bg-pink-100 rounded-md text-black">-->
+  <!--      <p>France *</p>-->
+  <!--    </div>-->
+  <!--  </div>-->
 </div>
-<div *ngFor="let match of matches"
-     class="mx-auto mt-5 bg-pink-100 h-max p-2 w-11/12 shadow-lg rounded-md flex justify-between border border-pink-200 items-center px-5">
-  <div class="h-max w-full flex bg-none">
-    <div class="flex w-full flex-col text-xs font-light text-zinc-500">
-      <div class="flex w-full justify-between">
-        <div id="info">
-          <p>Matchday {{match.matchday}}, Group {{match.group}}</p>
-          <p>Some Stadium</p>
-        </div>
-        <div>
-          {{match.local_date|date}}
-        </div>
-      </div>
-      <div class="flex h-max w-full">
-        <div class="w-full">
-          <div class="flex flex-col h-max">
-            <div class="flex justify-between">
-              <div class="flex">
-                <img alt="{{match.home_team_en}}" class="h-6 w-max my-2"
-                     src="{{match.home_flag}}">
-                <p class="my-auto font-bold text-black ml-2 text-lg font-sans">{{match.home_team_en}}</p>
-              </div>
-              <p class="my-auto font-bold text-black ml-2 text-lg font-sans">{{match.home_score}}</p>
-            </div>
-            <div class="flex justify-between ">
-              <div class="flex">
-                <img alt="{{match.away_team_en}}"
-                  class="h-6 w-max my-2"
-                     src="{{match.away_flag}}">
-                <p class="my-auto font-bold text-black ml-2 text-lg font-sans">{{match.away_team_en}}</p>
-              </div>
-              <p class="my-auto font-bold text-black ml-2 text-lg font-sans">{{match.away_score}}</p>
-            </div>
+<!--<ng-container *ngFor="let match of matches" >-->
+  <!--<div *ngIf="match.home_team_en === 'France' || match.away_team_en === 'France'"-->
+  <div *ngFor="let match of matches"
+    class=" w-max md:mx-auto mx-5 mt-5 bg-pink-100 h-max pt-2 md:w-11/12 shadow-lg rounded-md flex md:justify-between border border-pink-200 md:items-center px-2 md:px-5">
+    <div class="h-full w-11/12 md:w-full flex bg-none">
+      <div class=" mx-5 flex w-full flex-col text-xs font-light text-zinc-500">
+        <div class="flex w-max md:w-full justify-between">
+          <div id="info">
+            <p>Matchday {{match.matchday}}, Group {{match.group}}</p>
+            <!--          <p>Some Stadium</p>-->
+          </div>
+          <div class="ml-5">
+            {{match.local_date|date}}
           </div>
         </div>
-        <div class=" flex items-center font-bold  w-max ml-2">
-          <div *ngIf="(match.finished === 'FALSE' && match.time_elapsed !== 'finished');else elseBlock"
-               class="rounded-sm bg-red-500 px-0.5 text-pink-100">
-            <p *ngIf="match.time_elapsed !== 'notstarted'">{{match.time_elapsed | uppercase}}</p>
+        <div class="flex h-max w-full">
+          <div class="w-full">
+            <div class="flex flex-col h-max">
+              <div class="flex justify-between">
+                <div class="flex">
+                  <img alt="{{match.home_team_en}}" class="h-6 w-max my-2"
+                       src="{{match.home_flag}}">
+                  <p class="my-auto font-bold text-black ml-2 text-lg sm:text-base lg:text-lg font-sans">{{match.home_team_en}}</p>
+                </div>
+                <p class="my-auto font-bold text-black ml-2 text-lg sm:text-base lg:text-lg font-sans">{{match.home_score}}</p>
+              </div>
+              <div class="flex justify-between ">
+                <div class="flex">
+                  <img alt="{{match.away_team_en}}"
+                       class="h-6 w-max my-2"
+                       src="{{match.away_flag}}">
+                  <p class="my-auto font-bold text-black ml-2 text-lg sm:text-base lg:text-lg font-sans">{{match.away_team_en}}</p>
+                </div>
+                <p class="my-auto font-bold text-black ml-2 text-lg sm:text-base md:text-lg font-sans">{{match.away_score}}</p>
+              </div>
+            </div>
           </div>
-          <ng-template #elseBlock><p class="rounded-sm bg-black px-0.5 text-white">FT</p></ng-template>
+          <div class=" flex items-center font-bold  w-max ml-2">
+            <div *ngIf="(match.finished === 'FALSE' && match.time_elapsed !== 'finished');else elseBlock"
+                 class="rounded-sm bg-green-500 px-0.5 text-pink-100">
+              <p *ngIf="match.time_elapsed !== 'notstarted'">{{match.time_elapsed | uppercase}}</p>
+            </div>
+            <ng-template #elseBlock><p class="rounded-sm bg-black px-0.5 text-white">FT</p></ng-template>
+          </div>
         </div>
+
       </div>
 
     </div>
-
   </div>
-</div>
+<!--</ng-container>-->
 

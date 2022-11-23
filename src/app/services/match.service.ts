@@ -18,7 +18,7 @@ export class MatchService {
         .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzdjOTY4MDQ4NzA5MjMzZmQ5NGViNGYiLCJpYXQiOjE2NjkxMDk0OTQsImV4cCI6MTY2OTE5NTg5NH0.X9l_m2ykjSqH__UBU-EkpTEP9oE9nDnGAwjOqzZPc8E')
     }
     return  new Promise<void>((resolve, reject) => {
-      this.http.get<Res>('https://http-parse.herokuapp.com/match', header).toPromise().then(
+      this.http.get<any>('https://http-parse.herokuapp.com/match', header).toPromise().then(
         (result) => {
 
           this.matches = result?.data;
