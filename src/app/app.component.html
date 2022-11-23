@@ -1,5 +1,27 @@
-<app-navbar></app-navbar>
-<div class="flex h-screen font-sans">
-<app-matches class="w-3/12 bg-pink-900 h-full"></app-matches>
-<app-standings class="w-full p-3 bg-zinc-100 h-full"></app-standings>
+<app-navbar class="drop-shadow-md fixed"></app-navbar>
+<div class=" body flex h-screen font-sans pt-16">
+  <app-matches
+    class="matches w-4/12 bg-amber-600 h-full pb-10 overflow-scroll scrollbar-thin scrollbar-thumb-amber-600 scrollbar-track-zinc-200 scrollbar-rounded"></app-matches>
+  <app-standings
+    class="w-full rounded-t-lg p-3 bg-zinc-100 p-10 h-full overflow-scroll scrollbar-thin scrollbar-thumb-amber-600 scrollbar-track-zinc-200 scrollbar-rounded"></app-standings>
 </div>
+<div class="h-max bg-zinc-900 border-t-white border-t-2 flex flex-col">
+  <div class="w-full h-max flex">
+    <p class="m-auto text-white">Thank you for visiting, feel free to check out my other projects:</p>
+  </div>
+  <div class="flex p-3 pb-10 w-full">
+    <a href="https://github-search-v2.vercel.app/" class="m-auto ">
+      <div class="h-max overflow-hidden object-contain rounded-lg border-4 bg-black">
+        <img alt="Github Search"
+          class=" shadow-2xl h-56 border-zinc-400 cursor-pointer  scale-100 hover:scale-105 ease-in duration-300 hover:border-amber-500 opacity-80 hover:opacity-100"
+          src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=888&q=80">
+      </div>
+      <p class="w-full text-center text-white">Github Search</p>
+    </a>
+  </div>
+  <div class="w-full h-max flex pb-3">
+    <p class="m-auto text-white">@Brian-Weloba 2022</p>
+  </div>
+</div>
+
+

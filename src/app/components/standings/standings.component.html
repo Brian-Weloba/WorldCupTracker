@@ -1,7 +1,7 @@
 <div class="grid grid-cols-2 w-full">
-  <div class="bg-white border-2 rounded-lg border-zinc-200 h-max m-2 p-2">
+  <div *ngFor="let group of groups" class="bg-white border-2 rounded-lg border-zinc-200 h-max m-2 p-2">
     <div class="h-max rounded-t-lg">
-      <p class="font-bold ">GROUP A</p>
+      <p class="font-bold ">GROUP {{group}}</p>
     </div>
     <div class="flex justify-between">
       <table class="w-full text-center">
@@ -17,24 +17,25 @@
           <td>Pts</td>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-          <td class="font-bold">2</td>
-          <td class="text-left flex font-bold"> <img class="h-2 my-auto shadow-md mr-1"
-                                      src="https://upload.wikimedia.org/wikipedia/en/thumb/b/be/Flag_of_England.svg/125px-Flag_of_England.svg.png">England</td>
-          <td>1</td>
-          <td>0</td>
-          <td>1</td>
-          <td>0</td>
-          <td>-1</td>
-          <td>0</td>
-        </tr>
+        <ng-container *ngFor="let table of tables">
+        <tbody *ngIf="table.group === group">
+          <tr *ngFor="let team of table.teams" class="border-b ">
+            <td class="font-bold">{{table.teams.indexOf(team)+1}}</td>
+            <td class="text-left flex font-bold"><img alt="{{team.name_en}}" class="h-2 my-auto shadow-md mr-1"
+                                                      src="{{team.flag}}">{{team.name_en}}</td>
+            <td>{{team.mp}}</td>
+            <td>{{team.w}}</td>
+            <td>{{team.l}}</td>
+            <td>{{team.d}}</td>
+            <td>{{team.gd}}</td>
+            <td>{{team.pts}}</td>
 
+          </tr>
         </tbody>
+        </ng-container>
       </table>
     </div>
   </div>
-
 
 
 </div>
