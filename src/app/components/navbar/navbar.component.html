@@ -1,17 +1,36 @@
 <div class="h-max flex justify-between w-screen bg-pink-900">
   <img alt="World cup 2022" src="./assets/World-Cup-logo-landscape-on-dark.webp" class="h-16 p-2">
-<!--  <div class="text-white bg-amber-600 pl-5 pr-10 flex flex-col  ">-->
-<!--    <div class="text-xs">-->
-<!--      <p>Matchday 2, Group A</p>-->
-<!--    </div>-->
-<!--    <div class="flex justify-center items-center text-2xl">-->
-<!--      <p>Argentina</p>-->
-<!--      <div class="flex flex-col items-center text-center ">-->
-<!--        <p  class="text-sm flex h-max"><span class="text-white text-4xl pl-2 font-bold"> 1 </span><span class="text-xs my-auto rounded-md self-center  w-max px-0.5">85:23</span><span class="text-white text-4xl pr-2 font-bold">2</span></p>-->
-<!--&lt;!&ndash;        <p class="text-xs rounded-md  w-max px-0.5">85:23</p>&ndash;&gt;-->
+<!--  <div class=" flex justify-end m-2 ">-->
+<!--    <div class="text-black bg-white px-5 mr-5 flex flex-col mx-1 rounded-md shadow-md ">-->
+<!--      <div class="text-xs w-full flex justify-between pt-2">-->
+<!--        <div class="w-max h-max flex flex-col">-->
+<!--          <p>{{live?.match?.tournament}}</p>-->
+<!--          <p>{{live?.match?.venue?.staduim}}</p>-->
+<!--        </div>-->
+<!--        <p *ngIf="(live?.match?.status?.description === 'Not started'); else elseBlock">Coming Up</p>-->
+<!--        <ng-template #elseBlock>-->
+<!--          <div class="h-max w-max flex">-->
+<!--            <p class="pr-1">Live</p>-->
+<!--            <span class="flex h-3 w-3 my-auto">-->
+<!--          <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-green-400 opacity-75"></span>-->
+<!--          <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>-->
+<!--        </span>-->
+<!--          </div>-->
+<!--        </ng-template>-->
 <!--      </div>-->
-<!--      <p>Saudi Arabia</p>-->
+<!--      <div class="flex justify-center items-center text-2xl pb-2">-->
+<!--        <p>{{live?.match?.teams?.home?.name}}</p>-->
+<!--        <div class="flex flex-col items-center text-center ">-->
+<!--          <p class="text-sm flex h-max"><span class=" text-4xl pl-2 font-bold">{{live?.match?.score?.home}}</span><span-->
+<!--            class="text-xs my-auto rounded-md self-center text-amber-600  w-max px-0.5">{{minutes}}'</span><span-->
+<!--            class=" text-4xl pr-2 font-bold">{{live?.match?.score?.away}}</span></p>-->
+<!--          &lt;!&ndash;        <p class="text-xs rounded-md  w-max px-0.5">85:23</p>&ndash;&gt;-->
+<!--        </div>-->
+<!--        <p>{{live?.match?.teams?.away?.name}}</p>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash;          <p class="text-sm rounded-md border border-white w-max px-0.5">85:23</p>&ndash;&gt;-->
 <!--    </div>-->
-    <!--      <p class="text-sm rounded-md border border-white w-max px-0.5">85:23</p>-->
+<!--    &lt;!&ndash;          <p class="text-sm rounded-md border border-white w-max px-0.5">85:23</p>&ndash;&gt;-->
 <!--  </div>-->
 </div>

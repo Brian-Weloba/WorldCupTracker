@@ -1,4 +1,37 @@
 <div class="grid grid-cols-1 md:grid-cols-2 w-full">
+  <div class="text-black bg-white px-2 md:px-5 flex flex-col rounded-md shadow-md w-full md:col-span-2 mb-3">
+    <div class="text-xs w-full flex justify-between pt-2">
+      <div class="w-max h-max flex flex-col">
+        <p>{{live?.match?.tournament}}</p>
+        <p>{{live?.match?.venue?.staduim}}</p>
+      </div>
+      <p *ngIf="(live?.match?.status?.description === 'Not started'); else elseBlock">Coming Up</p>
+      <ng-template #elseBlock>
+        <div class="h-max w-max flex">
+          <p class="pr-1">Live</p>
+          <span class="flex h-3 w-3 my-auto">
+          <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-green-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+        </span>
+        </div>
+      </ng-template>
+    </div>
+    <div
+      class="flex font-bold justify-center items-center border border-zinc-200 mt-2 px-2 text-2xl py-2 rounded-md mb-2 shadow-md justify-around">
+      <p>{{live?.match?.teams?.home?.name}}</p>
+      <div class="flex flex-col items-center text-center ">
+        <p class="text-sm flex h-max"><span class=" text-4xl pl-2 font-bold">{{live?.match?.score?.home}}</span>
+          <span *ngIf="(live?.match?.status?.description === 'Not started'); else elseBlock">-</span>
+
+          <ng-template #elseBlock><span
+            class="text-xs my-auto rounded-md self-center text-amber-600  w-max px-2">{{minutes}}'</span>
+          </ng-template>
+          <span
+            class=" text-4xl pr-2 font-bold">{{live?.match?.score?.away}}</span></p>
+      </div>
+      <p>{{live?.match?.teams?.away?.name}}</p>
+    </div>
+  </div>
   <div *ngFor="let group of groups" class="bg-white border-2 rounded-lg border-zinc-200 h-max md:m-2 p-2">
     <div class="h-max rounded-t-lg">
       <p class="font-bold ">GROUP {{group}}</p>
@@ -18,9 +51,9 @@
         </tr>
         </thead>
         <ng-container *ngFor="let table of tables">
-        <tbody *ngIf="table.group === group">
+          <tbody *ngIf="table.group === group">
           <tr *ngFor="let team of table.teams" class="border-b ">
-            <td class="font-bold">{{table.teams.indexOf(team)+1}}</td>
+            <td class="font-bold">{{table.teams.indexOf(team) + 1}}</td>
             <td class="text-left flex font-bold"><img alt="{{team.name_en}}" class="h-2 my-auto shadow-md mr-1"
                                                       src="{{team.flag}}">{{team.name_en}}</td>
             <td>{{team.mp}}</td>
@@ -31,7 +64,7 @@
             <td>{{team.pts}}</td>
 
           </tr>
-        </tbody>
+          </tbody>
         </ng-container>
       </table>
     </div>
