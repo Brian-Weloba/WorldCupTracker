@@ -10,10 +10,11 @@ import {LiveScoreService} from "../../services/live-score.service";
   styleUrls: ['./standings.component.css']
 })
 export class StandingsComponent implements OnInit{
-  public tables: Table[] = [];
+   tables: Table[] = [];
   groups: string[] = ['A','B','C','D','E','F','G','H'];
   live: Live | undefined;
   minutes: any
+   match_time: any;
 
   ngOnInit(): void {
     this.fetchStandings()
@@ -36,7 +37,7 @@ export class StandingsComponent implements OnInit{
     await this.liveScore.getLiveScore().then(
       () => {
         this.live = this.liveScore.live;
-        //
+        this.match_time = new Date(this.live?.match.time?.start*1000).toLocaleString();
         if (this.live?.match.status.description === '1st half') {
           let time = this.live?.time - this.live?.match.time?.start;
           this.minutes = Math.floor(time / 60);
