@@ -14,7 +14,7 @@ export class LiveScoreService {
 
   public getLiveScore() {
     return new Promise<void>(async (resolve, reject) => {
-      await lastValueFrom(this.http.get<any>("https://iot.fbiego.com/worldcup/")).then(
+      await lastValueFrom(this.http.get<any>("https://http-parse.herokuapp.com/match/live")).then(
         (result) => {
           this.live = result;
           resolve();
