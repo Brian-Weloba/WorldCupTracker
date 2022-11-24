@@ -21,9 +21,9 @@
       <p>{{live?.match?.teams?.home?.name}}</p>
       <div class="flex flex-col items-center text-center ">
         <p class="text-sm flex h-max"><span class=" text-4xl pl-2 font-bold">{{live?.match?.score?.home}}</span>
-          <span *ngIf="(live?.match?.status?.description === 'Not started'); else elseBlock">-</span>
+          <span *ngIf="(live?.match?.status?.description === 'Not started'); else elseBlock2">-</span>
 
-          <ng-template #elseBlock><span
+          <ng-template #elseBlock2><span
             class="text-xs my-auto rounded-md self-center text-amber-600  w-max px-2">{{minutes}}'</span>
           </ng-template>
           <span
