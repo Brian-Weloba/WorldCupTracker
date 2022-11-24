@@ -44,7 +44,6 @@ export class StandingsComponent implements OnInit{
         } else if (this.live?.match.status.description === '2nd half') {
           let time = this.live?.time - this.live?.match.time?.period;
           this.minutes = Math.floor(time / 60)+45;
-          console.log(this.minutes)
           if(this.minutes>90){
             this.minutes = '90+'+(this.minutes-90);
           }
