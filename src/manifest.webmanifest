@@ -1,8 +1,8 @@
 {
   "name": "WorldCuptracker",
   "short_name": "WorldCuptracker",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "theme_color": "#702459",
+  "background_color": "#D97706",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
