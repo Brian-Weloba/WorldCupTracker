@@ -17,9 +17,10 @@ export class StandingsComponent implements OnInit{
 
   ngOnInit(): void {
     this.fetchStandings()
+    this.fetchLive()
     window.setInterval(() => {
       this.fetchLive()
-    }, 60000);
+    }, 10000);
   }
 
   constructor(private standingsService:StandingService,private liveScore: LiveScoreService) {
@@ -31,12 +32,12 @@ export class StandingsComponent implements OnInit{
     // clearInterval(intervalId)
   }
 
-  fetchLive() {
-    this.liveScore.getLiveScore().then(
+  async fetchLive() {
+    await this.liveScore.getLiveScore().then(
       () => {
         this.live = this.liveScore.live;
         //
-        if (this.live?.match.status.description === 'first half') {
+        if (this.live?.match.status.description === '1st half') {
           let time = this.live?.time - this.live?.match.time?.start;
           this.minutes = Math.floor(time / 60);
         } else if (this.live?.match.status.description === '2nd half') {
@@ -57,8 +58,8 @@ export class StandingsComponent implements OnInit{
       })
   }
 
-  fetchStandings(){
-    this.standingsService.fetchTables().then(
+  async fetchStandings(){
+    await this.standingsService.fetchTables().then(
       () => {
         this.tables = this.standingsService.tables;
         for (let table of this.tables){

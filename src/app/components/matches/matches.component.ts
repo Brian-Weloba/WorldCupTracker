@@ -20,8 +20,8 @@ export class MatchesComponent implements OnInit {
   }
 
 
-  private getMatches() {
-    this.matchService.getMatches().then(
+  private async getMatches() {
+    await this.matchService.getMatches().then(
       () => {
         this.matches = this.matchService.matches;
         for(let match of this.matches){
