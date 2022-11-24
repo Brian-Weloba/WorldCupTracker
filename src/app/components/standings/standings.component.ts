@@ -19,7 +19,7 @@ export class StandingsComponent implements OnInit{
     this.fetchStandings()
     window.setInterval(() => {
       this.fetchLive()
-    }, 5000);
+    }, 60000);
   }
 
   constructor(private standingsService:StandingService,private liveScore: LiveScoreService) {
