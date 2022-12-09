@@ -19,7 +19,7 @@ export class MatchService {
         .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzdjOTY4MDQ4NzA5MjMzZmQ5NGViNGYiLCJpYXQiOjE2NjkxMDk0OTQsImV4cCI6MTY2OTE5NTg5NH0.X9l_m2ykjSqH__UBU-EkpTEP9oE9nDnGAwjOqzZPc8E')
     };
     return  new Promise<void>(async (resolve, reject) => {
-      await lastValueFrom(this.http.get<any>('https://http-parse.herokuapp.com/match', header)).then(
+      await lastValueFrom(this.http.get<any>('https://projects.saturdev.tech/test/match', header)).then(
         (result) => {
 
           this.matches = result?.data;
