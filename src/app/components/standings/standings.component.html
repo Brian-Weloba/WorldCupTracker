@@ -5,69 +5,80 @@
         <p>{{live?.match?.tournament}}</p>
         <p>{{live?.match?.venue?.staduim}}</p>
       </div>
-      <p *ngIf="(live?.match?.status?.description === 'Not started'||live?.match?.status?.description === 'Ended' ); else elseBlock">{{match_time | date:	'MMM d, y, h:mm a'}}</p>
+      <p
+        *ngIf="(live?.match?.status?.description === 'Not started'||live?.match?.status?.description === 'Ended' ); else elseBlock">
+        {{match_time | date: 'MMM d, y, h:mm a'}}</p>
       <ng-template #elseBlock>
         <div class="h-max w-max flex">
           <p class="pr-1">Live</p>
           <span class="flex h-3 w-3 my-auto">
-          <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-green-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-        </span>
+            <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-green-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+          </span>
         </div>
       </ng-template>
     </div>
     <div
-      class="flex font-bold justify-center items-center border border-zinc-200 mt-2 px-2 text-2xl py-2 rounded-md mb-2 justify-around">
+      class="flex font-bold justify-center items-center border border-zinc-200 mt-2 px-2 text-2xl py-2 rounded-md mb-2">
       <p>{{live?.match?.teams?.home?.name}}</p>
       <div class="flex flex-col items-center text-center ">
         <p class="text-sm flex h-max"><span class=" text-4xl pl-2 font-bold">{{live?.match?.score?.home}}</span>
           <span *ngIf="(live?.match?.status?.description === 'Not started'); else elseBlock2">-</span>
 
           <ng-template #elseBlock2><span
-            class="text-xs my-auto rounded-md self-center text-amber-600  w-max px-2">{{minutes}}'</span>
+              class="text-xs my-auto rounded-md self-center text-amber-600  w-max px-2">{{minutes}}'</span>
           </ng-template>
-          <span
-            class=" text-4xl pr-2 font-bold">{{live?.match?.score?.away}}</span></p>
+          <span class=" text-4xl pr-2 font-bold">{{live?.match?.score?.away}}</span>
+        </p>
       </div>
       <p>{{live?.match?.teams?.away?.name}}</p>
     </div>
   </div>
-  <div *ngFor="let group of groups" class="bg-white border-2 rounded-lg border-zinc-200 h-max md:m-2 p-2">
-    <div class="h-max rounded-t-lg">
-      <p class="font-bold ">GROUP {{group}}</p>
-    </div>
-    <div class="flex justify-between">
-      <table class="w-full text-center">
-        <thead class="border-b-2 font-bold">
-        <tr>
-          <td></td>
-          <td class="text-left">Team</td>
-          <td>P</td>
-          <td>W</td>
-          <td>L</td>
-          <td>D</td>
-          <td>GD</td>
-          <td>Pts</td>
-        </tr>
-        </thead>
-        <ng-container *ngFor="let table of tables">
-          <tbody *ngIf="table.group === group">
-          <tr *ngFor="let team of table.teams" class="border-b ">
-            <td class="font-bold">{{table.teams.indexOf(team) + 1}}</td>
-            <td class="text-left flex font-bold"><img alt="{{team.name_en}}" class="h-2 my-auto shadow-md mr-1"
-                                                      src="{{team.flag}}">{{team.name_en}}</td>
-            <td>{{team.mp}}</td>
-            <td>{{team.w}}</td>
-            <td>{{team.l}}</td>
-            <td>{{team.d}}</td>
-            <td>{{team.gd}}</td>
-            <td>{{team.pts}}</td>
+  <ng-container *ngIf="!loading">
+    <div *ngFor="let group of groups" class="bg-white border-2 rounded-lg border-zinc-200 h-max md:m-2 p-2">
+      <div class="h-max rounded-t-lg">
+        <p class="font-bold ">GROUP {{group}}</p>
+      </div>
+      <div class="flex justify-between">
+        <table class="w-full text-center">
+          <thead class="border-b-2 font-bold">
+            <tr>
+              <td></td>
+              <td class="text-left">Team</td>
+              <td>P</td>
+              <td>W</td>
+              <td>L</td>
+              <td>D</td>
+              <td>GD</td>
+              <td>Pts</td>
+            </tr>
+          </thead>
+          <ng-container *ngFor="let table of tables">
+            <tbody *ngIf="table.group === group">
+              <tr *ngFor="let team of table.teams" class="border-b ">
+                <td class="font-bold">{{table.teams.indexOf(team) + 1}}</td>
+                <td class="text-left flex font-bold"><img alt="{{team.name_en}}" class="h-2 my-auto shadow-md mr-1"
+                    src="{{team.flag}}">{{team.name_en}}</td>
+                <td>{{team.mp}}</td>
+                <td>{{team.w}}</td>
+                <td>{{team.l}}</td>
+                <td>{{team.d}}</td>
+                <td>{{team.gd}}</td>
+                <td>{{team.pts}}</td>
 
-          </tr>
-          </tbody>
-        </ng-container>
-      </table>
+              </tr>
+            </tbody>
+          </ng-container>
+        </table>
+      </div>
     </div>
+  </ng-container>
+  <div *ngIf="loading"  role="status" class="flex w-full justify-center md:col-span-2 pt-5 ">
+      <svg aria-hidden="true" class="mr-2 w-8 h-8 text-gray-200 animate-spin fill-amber-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+          <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+      </svg>
+      <span class="sr-only">Loading...</span>
   </div>
 
 
