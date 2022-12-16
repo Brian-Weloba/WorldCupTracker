@@ -36,6 +36,8 @@ export class MatchesComponent implements OnInit {
 
   public async getMatches() {
     this.loading = true;
+    this.err = false;
+    console.log(this.loading)
     await this.matchService.getMatches().then(
       () => {
         this.matches = this.matchService.matches;
@@ -49,5 +51,6 @@ export class MatchesComponent implements OnInit {
       }
     );
     this.loading = false;
+    console.log(this.loading)
   }
 }

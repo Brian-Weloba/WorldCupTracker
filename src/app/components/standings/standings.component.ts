@@ -16,6 +16,7 @@ export class StandingsComponent implements OnInit {
   minutes: any;
   match_time: any;
   loading = false;
+  err = false;
 
   ngOnInit(): void {
     this.fetchStandings();
@@ -70,6 +71,7 @@ export class StandingsComponent implements OnInit {
 
   async fetchStandings() {
     this.loading = true;
+    this.err = false;
     await this.standingsService.fetchTables().then(
       () => {
         this.tables = this.standingsService.tables;
@@ -79,6 +81,7 @@ export class StandingsComponent implements OnInit {
       },
       (error) => {
         console.log(error);
+        this.err = true;
       }
     );
     this.loading = false;

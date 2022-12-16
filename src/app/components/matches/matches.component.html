@@ -75,8 +75,11 @@
   </svg>
   <span class="sr-only">Loading...</span>
 </div>
-<div *ngIf="err">
-  <p>Something went wrong</p>
-  <button (click)="getMatches()" class="underline ">Retry</button>
+<div *ngIf="err" class="w-full justify-center flex my-5 text-white">
+  <div class="flex flex-col">
+    <p>Oops! Something went wrong.</p>
+    <p>Error code: </p>
+    <button (click)="getMatches()" class="underline text-pink-900 hover:text-pink-800">Retry</button>
+  </div>
 </div>
 <!--</ng-container>-->
