@@ -11,7 +11,7 @@
 <!--<ng-container *ngFor="let match of matches" >-->
 <!--<div *ngIf="match.home_team_en === 'France' || match.away_team_en === 'France'"-->
 <ng-container *ngIf="!loading&&!err">
-  <div *ngFor="let match of matches"
+  <div *ngFor="let match of matches" (click)="toggleModal(match)"
     class="pb-3 sm:pb-0 w-max md:mx-auto mx-5 mt-5 bg-pink-100 h-max pt-2 md:w-11/12 shadow-lg rounded-md flex md:justify-between border border-pink-200 md:items-center px-2 md:px-5">
     <div class="h-full w-11/12 md:w-full flex bg-none">
       <div class=" mx-5 flex w-full flex-col text-xs font-light text-zinc-500">
@@ -82,4 +82,56 @@
     <button (click)="getMatches()" class="underline text-pink-900 hover:text-pink-800">Retry</button>
   </div>
 </div>
+<div *ngIf="showModal"
+  class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+  <div class="relative w-auto my-6 mx-auto max-w-6xl">
+    <!--content-->
+    <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+      <!--header-->
+      <div class="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+        <h3 class="text-3xl font-semibold">
+          Match Details
+        </h3>
+        <button
+          class="p-1 ml-auto bg-transparent border-0 text-black  float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+          (click)="toggleModal(null)">
+          x
+        </button>
+      </div>
+      <!--body-->
+      <div class="relative p-6 flex-auto">
+        <div class="my-4 text-black text-lg leading-relaxed flex flex-col">
+          <p> {{modalmatch.local_date|date}}</p>
+          <p>Matchday {{modalmatch.matchday}}, Group {{modalmatch.group}}</p>
+          <div>
+            <div class="text-3xl font-semibold border-b pb-2 flex justify-between">
+              <p>{{modalmatch.home_team_en}} {{modalmatch.home_score}}</p> <p>-</p> <p>{{modalmatch.away_score}}
+              {{modalmatch.away_team_en}}</p>
+            </div>
+          </div>
+          <div class="font-bold">
+            Goals
+          </div>
+          <div class="flex justify-between ">
+            <div class="flex flex-col pr-5">
+              <p *ngFor="let scorer of modalmatch.home_scorers" >{{scorer}}</p>
+            </div>
+            <div class="flex flex-col">
+              <p *ngFor="let scorer of modalmatch.away_scorers">{{scorer}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--footer-->
+      <div class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+        <button
+          class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button" (click)="toggleModal(null)">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
 <!--</ng-container>-->

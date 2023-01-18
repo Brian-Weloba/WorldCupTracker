@@ -11,6 +11,25 @@ export class MatchesComponent implements OnInit {
   matches: Match[] | undefined;
   loading = false;
   err = false;
+  modalmatch!: Match;
+
+  showModal = false;
+  toggleModal(match: any){
+    this.showModal = !this.showModal;
+    this.modalmatch = match
+    console.log(this.modalmatch.home_scorers)
+    this.modalmatch.home_scorers = this.modalmatch.home_scorers[0].split(',');
+    this.modalmatch.away_scorers = this.modalmatch.away_scorers[0].split(',');
+
+    if(this.modalmatch.home_scorers[0]==="null"){
+      this.modalmatch.home_scorers = []
+    }
+
+    if(this.modalmatch.away_scorers[0]==="null"){
+      this.modalmatch.away_scorers = []
+    }
+    console.log(this.modalmatch.home_scorers)
+  }
 
   ngOnInit(): void {
     this.getMatches();
@@ -29,7 +48,9 @@ export class MatchesComponent implements OnInit {
       'Spain',
       '',
       '',
-      '1'
+      '1',
+      [],
+      []
     );
     this.matches?.push(match);
   }

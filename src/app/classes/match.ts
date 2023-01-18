@@ -12,7 +12,9 @@ export class Match {
     public away_team_en: any,
     public home_flag: any,
     public away_flag: any,
-    public matchday: any
+    public matchday: any,
+    public away_scorers:String[],
+    public home_scorers:String[],
   ) {
   }
 }
