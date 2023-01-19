@@ -22,8 +22,8 @@ export class MatchService {
       await lastValueFrom(this.http.get<any>('https://projects.saturdev.tech/worldcupapi/matches', header)).then(
         (result) => {
 
-          this.matches = result?.data;
-          // console.log(this.matches);
+          this.matches = result;
+          console.log(this.matches);
           resolve();
         },
         (err) => {
