@@ -14,16 +14,10 @@ export class MatchService {
   }
 
   public getMatches() {
-    const header = {
-      headers: new HttpHeaders()
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzdjOTY4MDQ4NzA5MjMzZmQ5NGViNGYiLCJpYXQiOjE2NjkxMDk0OTQsImV4cCI6MTY2OTE5NTg5NH0.X9l_m2ykjSqH__UBU-EkpTEP9oE9nDnGAwjOqzZPc8E')
-    };
     return new Promise<void>(async (resolve, reject) => {
-      await lastValueFrom(this.http.get<any>('https://projects.saturdev.tech/worldcupapi/matches', header)).then(
+      await lastValueFrom(this.http.get<any>('https://projects.saturdev.tech/worldcupapi/matches')).then(
         (result) => {
-          // console.log("result ::" + result);
           this.matches = result;
-          // console.log(this.matches);
           resolve();
         },
         (err) => {

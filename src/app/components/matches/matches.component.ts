@@ -12,23 +12,29 @@ export class MatchesComponent implements OnInit {
   loading = false;
   err = false;
   modalmatch!: Match;
+  home_scorers: String[] | undefined
+  away_scorers: String[] | undefined
 
   showModal = false;
-  toggleModal(match: any){
+  openModal(match: any) {
     this.showModal = !this.showModal;
     this.modalmatch = match
     console.log(this.modalmatch.home_scorers)
-    this.modalmatch.home_scorers = this.modalmatch.home_scorers[0].split(',');
-    this.modalmatch.away_scorers = this.modalmatch.away_scorers[0].split(',');
+    this.home_scorers = this.modalmatch.home_scorers.split(',');
+    this.away_scorers = this.modalmatch.away_scorers.split(',');
 
-    if(this.modalmatch.home_scorers[0]==="null"){
-      this.modalmatch.home_scorers = []
+    if (this.home_scorers[0] === "null") {
+      this.home_scorers = []
     }
 
-    if(this.modalmatch.away_scorers[0]==="null"){
-      this.modalmatch.away_scorers = []
+    if (this.away_scorers[0] === "null") {
+      this.away_scorers = []
     }
-    console.log(this.modalmatch.home_scorers)
+    console.log(this.home_scorers)
+  }
+
+  closeModal() {
+    this.showModal = !this.showModal;
   }
 
   ngOnInit(): void {
@@ -49,8 +55,8 @@ export class MatchesComponent implements OnInit {
       '',
       '',
       '1',
-      [],
-      []
+      "",
+      ""
     );
     this.matches?.push(match);
   }
@@ -68,7 +74,7 @@ export class MatchesComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        this.err=true
+        this.err = true
       }
     );
     this.loading = false;
