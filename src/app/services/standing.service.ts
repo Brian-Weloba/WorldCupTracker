@@ -16,7 +16,7 @@ export class StandingService {
     return new Promise<void>(async (resolve, reject) => {
       await lastValueFrom(this.http.get<any>('https://projects.saturdev.tech/worldcupapi/standings')).then(
         (result) => {
-          this.tables = result.data;
+          this.tables = result;
           // console.log(this.tables);
           resolve()
         },
