@@ -34,7 +34,7 @@ export class StandingService {
             });
           });
 
-          console.log(this.tables);
+          // console.log(this.tables);
           resolve();
         },
         (err) => {
