@@ -1,13 +1,10 @@
 export class Table {
-  constructor(
-    public group: any,
-    public teams: Team[]
-  ) {
-  }
+  constructor(public group: any, public teams: Team[]) {}
 }
 
 export class Team {
   constructor(
+    public group: any,
     public mp: any,
     public w: any,
     public l: any,
@@ -18,6 +15,5 @@ export class Team {
     public gd: any,
     public name_en: any,
     public flag: any
-  ) {
-  }
+  ) {}
 }

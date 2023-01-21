@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { TeamComponent } from './components/team/team.component';
 import {AboutBannerModule} from "about-banner";
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { NgParticlesModule } from "ng-particles";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
         HttpClientModule,
         AppRoutingModule,
         AboutBannerModule,
+        NgParticlesModule,
         ServiceWorkerModule.register('ngsw-worker.js', {
           enabled: !isDevMode(),
           // Register the ServiceWorker as soon as the application is stable

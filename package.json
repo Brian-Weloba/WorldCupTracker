@@ -20,8 +20,11 @@
     "@angular/router": "^15.0.1",
     "@angular/service-worker": "^15.0.1",
     "about-banner": "^0.0.1",
+    "ng-particles": "^3.8.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "tsparticles": "^2.8.0",
+    "tsparticles-engine": "^2.8.0",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
